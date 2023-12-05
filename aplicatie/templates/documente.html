@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Documente</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='acasa.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+{% endblock %}
+
+{% block body %}
+    {{ super() }} <!--Folosim super() pt ca block body sa functioneze si sa nu il inlocuiasca pe cel din base.html -->
+    <div id="breadcrumbs"></div>
+    <div class="table-container">
+        <table id="myTable">
+            <tr>
+                {% set column_names = ['Nume angajat']%}
+                {% for column in column_names %}
+                    <th class="titluTabel">{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for angajat in angajati %}
+            <tr id="{{ angajat.id }}">  
+                <td><!--<a href="{{ url_for('contract', nume_angajat=angajat.nume) }}">-->{{ angajat.nume }}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script src="{{ url_for('static', filename='styling.js') }}"></script>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+{% endblock %}

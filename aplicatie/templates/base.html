@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='acasa.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div class="content">
+        <div class="color-selector">
+            <div id="colorSelector" class="dropdown">
+                <button class="dropbtn">Select a color</button>
+                <div class="dropdown-content">
+                    <a href="#" data-value="default">Default</a>
+                    <a href="#" data-value="twilight">Twilight</a>
+                    <a href="#" data-value="earth">Earth</a>
+                    <a href="#" data-value="blush">Blush</a>
+                </div>
+            </div>
+        </div>
+        
+    
+        <h5><a href="/deconectare"><img width="48" height="48" src="https://img.icons8.com/pulsar-color/48/exit.png" alt="Deconectare"/></a></h5>
+    </div>
+</div>
+        <h1>CNA</h1>
+    <script src="{{ url_for('static', filename='styling.js') }}"></script>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

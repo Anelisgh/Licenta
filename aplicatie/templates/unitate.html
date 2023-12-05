@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Unitate</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='acasa.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+{% endblock %}
+
+{% block body %}
+    {{ super() }} <!--Folosim super() pt ca block body sa functioneze si sa nu il inlocuiasca pe cel din base.html -->
+    <!-- Conținutul dvs. aici -->
+    <div id="breadcrumbs"></div>
+    <script src="{{ url_for('static', filename='styling.js') }}"></script>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+{% endblock %}

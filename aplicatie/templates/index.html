@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Acasa</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='acasa.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+{% endblock %}
+{% block body %}   
+    {{ super() }}
+    <div class="container">
+        {% with messages = get_flashed_messages()%}
+        {% if messages %}
+        <div id="flashMessage" class="flash">
+            {% for msg in get_flashed_messages() %}
+                <p> {{msg}} </p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+        <div class="table-container">
+                <table>
+                    <tr>
+                        <th><a href="/angajati"><img width="30" height="30" src="https://img.icons8.com/pulsar-color/48/conference-call.png" alt="conference-call"/>Angajati</a></th>
+                        <th><a href="/documente"><img width="30" height="30" src="https://img.icons8.com/pulsar-color/48/document.png" alt="document"/>Documente</a></th>
+                        <th><a href="/unitate"><img width="30" height="30" src="https://img.icons8.com/pulsar-color/48/link-company-parent.png" alt="link-company-parent"/>Unitate</a></th>
+                    </tr>
+                </table>
+        </div>
+
+    <script src="{{ url_for('static', filename='styling.js') }}"></script>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+    <style>
+        .table-container th, .table-container td {
+            white-space: normal;
+            text-overflow: clip;
+            overflow: visible;
+        }
+        .table-container th:hover {
+            transform: scale(1.1);
+            background-color: var(--hover-table);
+            transition: transform 0.2s ease, background-color 0.6s ease;
+        }
+        
+    </style> 
+{% endblock %}

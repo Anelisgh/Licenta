@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Contract de muncă</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='acasa.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+{% endblock %}
+
+{% block body %}
+    {{ super() }} <!--Folosim super() pt ca block body sa functioneze si sa nu il inlocuiasca pe cel din base.html -->
+    <div id="breadcrumbs"></div>
+    <h2>Contract de angajare</h2>
+    {% for contract in contracte %}
+    <h2>Nr. {{ contract.id }}</h2>
+    {% endfor %}
+
+    <h3>Inițial</h3>
+    <div class="table-container">
+        <table id="myTable">
+            <tr>
+                {% set column_names = ['Nume Angajat', 'Data Angajare', 'Functie', 'Vechime In Institutie', 'Vechime Anterioara', 'Vechime Totala', 'Salariu'] %}
+                {% for column in column_names %}
+                    <th class="titluTabel">{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for contract in contracte %}
+            <tr id="{{ contract.id }}">  
+                <td>{{ contract.angajat.nume }}</td>
+                <td>{{ contract.dataAngajare }}</td>
+                <td>{{ contract.functie }}</td>
+                <td>{{ contract.vechimeInInstitutie }}</td>
+                <td>{{ contract.vechimeAnterioara }}</td>
+                <td>{{ contract.vechimeTotala }}</td>
+                <td>{{ contract.salariu }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <h3>Adițional Nr. 1</h3>
+    <div class="table-container">
+        <table id="myTable">
+            <tr>
+                {% set column_names = ['Nume Angajat', 'Data Angajare', 'Functie', 'Salariu'] %}
+                {% for column in column_names %}
+                    <th class="titluTabel">{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for contract in contracte %}
+            <tr id="{{ contract.id }}">  
+                <td class="editabil">{{ contract.angajat.nume }}</td>
+                <td class="editabil">{{ contract.dataAngajare }}</td>
+                <td>
+                    <select name="functie" id="functie">
+                        <option value="director" {% if contract.functie == 'Director' %} selected {% endif %}>Director</option>
+                        <option value="secretara" {% if contract.functie == 'Secretara' %} selected {% endif %}>Secretara</option>
+                        <option value="consilier" {% if contract.functie == 'Consilier' %} selected {% endif %}>Consilier</option>
+                        <option value="economist" {% if contract.functie == 'Economist' %} selected {% endif %}>Economist</option>
+                    </select>
+                </td>
+                <td class="editabil">{{ contract.salariu }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+   
+    
+<script src="{{ url_for('static', filename='styling.js') }}"></script>
+<script src="{{ url_for('static', filename='theme.js') }}"></script>
+
+{% endblock %}

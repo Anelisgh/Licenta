@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Act Identitate</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='acasa.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+{% endblock %}
+
+{% block body %}
+    {{ super() }} <!--Folosim super() pt ca block body sa functioneze si sa nu il inlocuiasca pe cel din base.html -->
+    <div id="breadcrumbs"></div>
+    
+    <div class="table-container">
+        <table id="myTable">
+            <tr>
+                {% set column_names = ['Nume si Prenume', 'Data Nasteri', 'Seria si Nr.', 'CNP', 'Data Emitere', 'Data Expirare'] %}
+                {% for column in column_names %}
+                    <th class="titluTabel">{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for act in act_identitate %}
+            <tr id="{{ act.id }}">  
+                <td>{{ act.angajat_nume }}</td>
+                <td>{{ act.dataNastere }}</td>
+                <td>{{ act.angajat_actIdentitate }}</td>
+                <td>{{ act.CNP }}</td>
+                <td>{{ act.dataEmitere }}</td>
+                <td>{{ act.dataExpirare }}</td>
+            </tr>            
+            {% endfor %}
+        </table>
+    </div>
+
+ 
+    <script src="{{ url_for('static', filename='styling.js') }}"></script>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
+{% endblock %}

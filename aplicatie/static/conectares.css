@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.flash {
+  position: absolute; 
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--flash-text);
+  background-color: var(--flash-background);
+  border-color: var(--flash-border);
+}
+
+h1{
+    margin-left: 30px;
+    font-size: 50px;
+    color: var(--firma);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 250px;
+  background: var(--table-color-elements);
+  border-radius: 40px;
+  padding: 25px 35px;
+  border: 5px solid white;
+  box-shadow: var(--table-shadow) 0px 10px 32px -10px;  /* Horizontal Offset, Vertical Offset, Blur, Spread */
+  margin: auto;
+  }
+  
+  .container h2 {
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    color: var(--text-table-title);
+  }
+  
+  .container form {
+    margin-top: 20px;
+  }
+  
+  .container form p input {
+      display: block;
+      width: auto;
+      max-width: fit-content;
+      margin: 15px auto;
+      background:white;
+      border:none;
+      padding:15px 20px;
+      border-radius:20px;
+      margin-top:15px;
+      box-shadow:var(--table-shadow) 2px 5px 1px 1px;
+      border-inline: 2px solid transparent;
+  }
+  
+  .container form p input::-moz-placeholder {
+      color:rgb(170,170,170);
+  }
+  
+  .container form p input::placeholder {
+      color:rgb(170,170,170);
+  }
+  
+  .container form p input:focus {
+      outline: none;
+      border-inline: 3px solid var(--table-border);
+  }
+  
+  .container form button {
+      display: block;
+      width: 25%;
+      font-weight:bold;
+      background: linear-gradient(45deg, var(--table-shadow) 0%, var(--table-border) 100%);
+      color:white;
+      padding-block:15px;
+      margin:20px auto;
+      border-radius:20px;
+      box-shadow: var(--table-shadow)0px 12px 10px -15px;
+      border:none;
+      transition:all .2s ease-in-out
+  }
+  
+  .container form button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    box-shadow: var(--table-shadow)0px20px10px-20px
+  }
+  
+  .container form button:focus {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    box-shadow: var(--table-shadow)0px15px10px-10px
+  }
+  

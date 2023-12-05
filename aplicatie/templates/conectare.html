@@ -1,0 +1,28 @@
+{% extends "base.html" %} <!-- numele blocurilor din base.html si conectare.html trebuie sa fie aceleasi, altfel pagina nu va functiona -->
+{% block head %}
+<h1> CNA </h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='conectares.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    <form action="#" method="POST" class="form">
+        <h2>Conectare</h2>
+        <p><input type="text" name="nume" id="nume" placeholder="Nume utilizator"/></p>
+        <p><input type="password" name="parola" id="parola" placeholder="Parola"/></p>
+        <button type="submit">→</button>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='styling.js') }}"></script>
+<script src="{{ url_for('static', filename='theme.js') }}"></script>
+
+{% endblock %}
